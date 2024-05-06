@@ -1,4 +1,4 @@
-# Week2.
+# Week2. Refactoring & Function
 ## Refactoring
 - make a separate module or function
 - making your code more modular and clear

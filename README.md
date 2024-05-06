@@ -3,7 +3,7 @@
 - It includes the concept of oop and usage of c++
 
 ## Weekly Summary
-- [Week 1](w1/note.md)
+- [Week 1](w1/note.md) Basics
   - Execution
     1. Compiler produces object file `g++ -c main.cpp`
     2. Link the object file `g++ main.o -o main` 
@@ -19,8 +19,8 @@
     - \>> : returns istream type (input). `cin >> value`
   - <iostream>
     - ios, istream, ostream, streambuf, cin, cout, cerr, clog
-- [Week 2](w2/note.md)
-  - Refactoring & function
+- [Week 2](w2/note.md) Refactoring & function
     - See all warnings `g++ -Wall main2.cpp`
     - /** XYZ */ generates a tooptip of functions
-- [Week 3]
+- [Week 3](w3/note.md) Data
+  - 
