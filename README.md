@@ -20,3 +20,7 @@
   - <iostream>
     - ios, istream, ostream, streambuf, cin, cout, cerr, clog
 - [Week 2](w2/note.md)
+  - Refactoring & function
+    - See all warnings `g++ -Wall main2.cpp`
+    - /** XYZ */ generates a tooptip of functions
+- [Week 3]
