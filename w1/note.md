@@ -67,7 +67,7 @@
   - <<는 함수 레퍼런스 리턴
 - cf. `>>` cin에 사용되는 extraction operator
 
-## <\n
+## 개행 문자 (\n)
 - 줄 마지막 문자인 \n은 OS에 따라 적절한 문자로 변환됨
 - 윈도우의 경우 C 텍스트 스트림은 \n을 \r\n으로, \r\n을 \n으로 변환
   - 텍스트 스트림: 0개 이상의 문자와 개행 문자 \n로 구성된 문자열
@@ -120,7 +120,7 @@
   cout << boolalpha << true << endline
   ```
 
-### [cout vs. printf](https://blog.naver.com/view7186/222083168651)
+### 참고 [cout vs. printf](https://blog.naver.com/view7186/222083168651)
 #### cout
 - \<iostream>
 - C++의 스트림 유형 객체
