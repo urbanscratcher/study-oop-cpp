@@ -18,5 +18,5 @@
     - << : returns ostream type (output). `cout << value`
     - \>> : returns istream type (input). `cin >> value`
   - <iostream>
-    - ios, __istream__, **ostream**, streambuf, **cin**, **cout**, cerr, clog
+    - ios, istream, ostream, streambuf, cin, cout, cerr, clog
 - [Week 2](w2/note.md)
