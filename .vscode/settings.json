@@ -44,6 +44,8 @@
     "algorithm": "cpp",
     "vector": "cpp",
     "__split_buffer": "cpp",
-    "array": "cpp"
+    "array": "cpp",
+    "fstream": "cpp",
+    "iomanip": "cpp"
   }
 }

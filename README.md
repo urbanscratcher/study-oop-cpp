@@ -2,7 +2,7 @@
 - This is a personal note from my oop course every week
 - It includes the concept of oop and usage of c++
 
-## Weekly Summary
+## Summary
 ### [Week 1. Basics](w1/note.md)
 - Execution
   1. Compiler produces object file `g++ -c main.cpp`
@@ -60,3 +60,17 @@
   - `private` 키워드로 데이터 은닉과 캡슐화
 - 헤더 파일 중복 포함 방지
   - `.h` 파일 상단부에 `#pragma once` 사용
+
+  ### [Week 5. Tokenizing & File Input & Exception](w5/note.md)
+- 토큰화(Tokenizing)
+  - 구분자(`,` 등)로 문자열을 개별 요소(토큰)로 분리
+- `std::string::npos`
+  - 문자열에서 찾기 연산이 실패했을 때 반환되는 특별한 값
+- 텍스트 파일 읽기
+  - `#include <fstream>` 파일 스트림 클래스 포함
+  - `std::ifstream` 파일 읽기 스트림 객체
+  - `std::getline()` 줄 단위로 파일 읽기
+  - `close()` 파일 닫기로 리소스 누수 방지
+- 예외 처리
+  - `std::stod()` 유효하지 않은 값 처리
+  - `try-catch` 블록을 사용해 예외 처리
