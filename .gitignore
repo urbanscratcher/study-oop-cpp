@@ -1,6 +1,5 @@
 .vscode
-w3/*.csv
-w4/*.csv
+20200317.csv
 
 # Created by https://www.toptal.com/developers/gitignore/api/c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++

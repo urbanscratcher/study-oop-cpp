@@ -1,3 +1,7 @@
+#pragma once
+#include <vector>
+#include "OrderBookEntry.h"
+
 class MerkelMain
 {
 public:
@@ -6,6 +10,7 @@ public:
   void init();
 
 private:
+  void loadOrderBook();
   void printMenu();
   void printHelp();
   void printMarketStats();
@@ -16,4 +21,6 @@ private:
   int getUserOption();
   void processUserOption(int userOption);
   int main();
+
+  std::vector<OrderBookEntry> orders;
 };
