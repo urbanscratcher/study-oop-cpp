@@ -1,0 +1,1 @@
+g++ std=c++11 main.cpp OrderBookEntry.cpp MerkelMain.cpp -o main

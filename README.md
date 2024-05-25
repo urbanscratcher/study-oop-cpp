@@ -10,6 +10,7 @@
   3. Execute `./main`
   - Simply `g++ main.cpp` to produce an executable file (a.out)
   - Or `g++ main.cpp -o main` to produce an executable binary file (main)
+  - `g++ --std=c++11 main.cpp` to use enum class etc
 - 표준 헤더 파일
   - stdio.h, stdlib.h, string.h, time.h, math.h, memory.h
 - 범위 해결 연산자 ::
@@ -19,12 +20,12 @@
   - \>> : returns istream type (input). `cin >> value`
 - <iostream>
   - ios, istream, ostream, streambuf, cin, cout, cerr, clog
-  
-### [Week 2. Refactoring & function](w2/note.md)
+
+### [Week 2. Refactoring & Function](w2/note.md)
 - See all warnings `g++ -Wall main2.cpp`
 - /** XYZ */ generates a tooptip of functions
 
-### [Week 3. Data](w3/note.md)
+### [Week 3. Data Type](w3/note.md)
 - Data type
   - 부호 포함(signed), 양수만(unsigned)
   - 기본형
