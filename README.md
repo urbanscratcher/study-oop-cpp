@@ -43,3 +43,20 @@
     ```cpp
       #include<vector>
     ```
+
+### [Week 4. Class Encapsulation]
+- 헤더 및 구현 파일
+  - `OrderBookEntry.h`에 클래스 선언
+  - `OrderBookEntry.cpp`에 구현
+- 컴파일 및 링크
+  - 링크할 때 구현 파일도 함께 포함해야 함
+  - `g++ --std=c++11 main.cpp OrderBookEntry.cpp -o main`
+- 객체 초기화 (C++11)
+  - `CustomClass objectName{}`
+- 생성자와 초기화 함수 분리
+  - 책임 분리, 유연성, 오류 처리, 테스트 용이성을 위해 분리
+- 클래스 내 멤버에 대한 접근 제한
+  - `public` 키워드로 멤버 노출
+  - `private` 키워드로 데이터 은닉과 캡슐화
+- 헤더 파일 중복 포함 방지
+  - `.h` 파일 상단부에 `#pragma once` 사용
