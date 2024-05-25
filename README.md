@@ -44,7 +44,7 @@
       #include<vector>
     ```
 
-### [Week 4. Class Encapsulation]
+### [Week 4. Class Encapsulation](w4/note.md)
 - 헤더 및 구현 파일
   - `OrderBookEntry.h`에 클래스 선언
   - `OrderBookEntry.cpp`에 구현
