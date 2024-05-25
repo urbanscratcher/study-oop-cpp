@@ -61,7 +61,7 @@
 - 헤더 파일 중복 포함 방지
   - `.h` 파일 상단부에 `#pragma once` 사용
 
-  ### [Week 5. Tokenizing & File Input & Exception](w5/note.md)
+### [Week 5. Tokenizing & File Input & Exception](w5/note.md)
 - 토큰화(Tokenizing)
   - 구분자(`,` 등)로 문자열을 개별 요소(토큰)로 분리
 - `std::string::npos`
@@ -74,3 +74,5 @@
 - 예외 처리
   - `std::stod()` 유효하지 않은 값 처리
   - `try-catch` 블록을 사용해 예외 처리
+
+  
