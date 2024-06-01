@@ -48,38 +48,6 @@ void MerkelMain::printHelp()
 void MerkelMain::printMarketStats()
 {
 
-    ////////////////////////////////////////////////
-    // Test Stats
-    std::vector<OrderBookEntry> testEntries = {
-        OrderBookEntry{0.02, 7.4, "2020/03/17 17:01:24.884492", "ETH/BTC", OrderBookType::ask},
-        OrderBookEntry{0.03, 3.4, "2020/03/17 17:01:24.884492", "ETH/BTC", OrderBookType::ask},
-        OrderBookEntry{0.07, 6.8, "2020/03/17 17:01:24.884492", "ETH/BTC", OrderBookType::ask}};
-    double expectedMean = 0.04;
-    double expectedMedian = 0.03;
-    double expectedTotalAmount = 17.6;
-    double expectedVWAP = 0.04125;
-
-    std::vector<OrderBookEntry> testEntriesPrev = {
-        OrderBookEntry{0.04, 7.4, "2020/03/17 17:00:24.884492", "ETH/BTC", OrderBookType::ask},
-        OrderBookEntry{0.02, 10.4, "2020/03/17 17:00:24.884492", "ETH/BTC", OrderBookType::ask},
-        OrderBookEntry{0.03, 2.8, "2020/03/17 17:00:24.884492", "ETH/BTC", OrderBookType::ask}};
-    double expectedMeanPrev = 0.03;
-    double expectedMedianPrev = 0.03;
-    double expectedVWAPChangePrev = 0.02854368932;
-
-    double expectedMeanChange = 0.01;
-    double expectedMedianChange = 0;
-    double expectedVWAPChange = 0.01270631068;
-
-    std::cout << "[TEST] Mean ask: " << OrderBook::getMeanPrice(testEntries) << " (Expected " << expectedMean << ")" << std::endl;
-    std::cout << "[TEST] Median ask: " << OrderBook::getMedianPrice(testEntries) << " (Expected " << expectedMedian << ")" << std::endl;
-    std::cout << "[TEST] Mean change ask: " << OrderBook::getMeanPriceChange(testEntriesPrev, testEntries) << " (Expected " << expectedMeanChange << ")" << std::endl;
-    std::cout << "[TEST] Median change ask: " << OrderBook::getMedianPriceChange(testEntriesPrev, testEntries) << " (Expected " << expectedMedianChange << ")" << std::endl;
-    std::cout << "[TEST] VWAP change ask: " << OrderBook::getVWAPChange(testEntriesPrev, testEntries) << " (Expected " << expectedVWAPChange << ")" << std::endl;
-    std::cout << "[TEST] Total Amount: " << OrderBook::getTotalAmount(testEntries) << " (Expected " << expectedTotalAmount << ")" << std::endl;
-    std::cout << "[TEST] VWAP: " << OrderBook::getVWAP(testEntries) << " (Expected " << expectedVWAP << ")" << std::endl;
-    ////////////////////////////////////////////////
-
     for (std::string const p : orderBooks.getKnownProducts())
     {
         std::cout << "Product: " << p << std::endl;
@@ -155,13 +123,22 @@ void MerkelMain::printWallet()
 void MerkelMain::gotoNextTimeframe()
 {
     std::cout << "Going to next time frame. " << std::endl;
+    for (std::string &p : orderBooks.getKnownProducts())
+    {
+        std::cout << "matching " << p << std::endl;
+        std::vector<OrderBookEntry> sales = orderBooks.matchAsksToBids(p, currentTime);
+        std::cout << "Sales: " << sales.size() << std::endl;
+        for (OrderBookEntry &sale : sales)
+        {
+            std::cout << "Sale price: " << sale.price << " amount " << sale.amount << std::endl;
+        }
+    }
     currentTime = orderBooks.getNextTime(currentTime);
 }
 
 int MerkelMain::getUserOption()
 {
     int userOption = 0;
-
     std::string line;
     std::cout << "Type in 1-6" << std::endl;
     std::getline(std::cin, line);
