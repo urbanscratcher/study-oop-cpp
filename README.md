@@ -111,4 +111,6 @@
   - `&item` 참조를 사용해 불필요한 복사 방지, 메모리 최적화
 
 
-### [Week 8. Retrieving Data](w8/note.md)
+### [Week 8. Matching Algorithm](w8/note.md)
+- `getline()`을 사용할 때 `cin()`과 함께 사용 시 문제가 발생할 수 있으며, 이를 해결하기 위해 `cin.ignore()`를 사용해야 함
+- 주문서 처리 알고리즘은 매도 주문을 오름차순, 매수 주문을 내림차순으로 정렬하고, 조건에 따라 매칭되며 처리되는 사항은 `sales` 에 기록함.
