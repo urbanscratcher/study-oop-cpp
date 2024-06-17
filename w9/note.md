@@ -14,4 +14,5 @@
   - can be called without instantiating the class into an object.
 - Non-static functions
   - have access to class data members.
-  - require an object, and you call them on that object. 
+  - require an object, and you call them on that object.
+

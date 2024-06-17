@@ -4,11 +4,13 @@
 #include <algorithm>
 #include <iostream>
 
+
 /** construct, reading a csv data file */
 OrderBook::OrderBook(std::string filename)
 {
     orders = CSVReader::readCSV(filename);
 }
+
 /** return vector of all know products in the dataset*/
 std::vector<std::string> OrderBook::getKnownProducts()
 {
@@ -112,6 +114,14 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
     // sales = []
     std::vector<OrderBookEntry> sales; 
 
+    // I put in a little check to ensure we have bids and asks
+    // to process.
+    if (asks.size() == 0 || bids.size() == 0)
+    {
+        std::cout << " OrderBook::matchAsksToBids no bids or asks" << std::endl;
+        return sales;
+    }
+
     // sort asks lowest first
     std::sort(asks.begin(), asks.end(), OrderBookEntry::compareByPriceAsc);
     // sort bids highest first
@@ -124,19 +134,29 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
     
     for (OrderBookEntry& ask : asks)
     {
-        //std::cout << "Ask p: " << ask.price << " a: " << ask.amount << std::endl;
     //     for bid in bids:
         for (OrderBookEntry& bid : bids)
         {
-            //std::cout << "bid p: " << bid.price << " a: " << bid.amount << std::endl;
-
     //         if bid.price >= ask.price # we have a match
             if (bid.price >= ask.price)
             {
-                std::cout << "bid price is right " << std::endl;
     //             sale = new order()
     //             sale.price = ask.price
-                OrderBookEntry sale{ask.price, 0, timestamp, product, OrderBookType::sale};
+            OrderBookEntry sale{ask.price, 0, timestamp, 
+                product, 
+                OrderBookType::asksale};
+
+                if (bid.username == "simuser")
+                {
+                    sale.username = "simuser";
+                    sale.orderType = OrderBookType::bidsale;
+                }
+                if (ask.username == "simuser")
+                {
+                    sale.username = "simuser";
+                    sale.orderType =  OrderBookType::asksale;
+                }
+            
     //             # now work out how much was sold and 
     //             # create new bids and asks covering 
     //             # anything that was not sold
@@ -172,7 +192,8 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
 
 
     //             if bid.amount < ask.amount # bid is completely gone, slice the ask
-                if (bid.amount < ask.amount)
+                if (bid.amount < ask.amount && 
+                   bid.amount > 0)
                 {
     //                 sale.amount = bid.amount
                     sale.amount = bid.amount;
@@ -193,4 +214,3 @@ std::vector<OrderBookEntry> OrderBook::matchAsksToBids(std::string product, std:
     }
     return sales;             
 }
-
