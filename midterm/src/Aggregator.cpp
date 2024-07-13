@@ -26,7 +26,7 @@ std::vector<Candlestick> Aggregator::aggregateYearly(std::vector<TemperatureEntr
     // get previous candlestick close
     // because it is the open of the current candlestick
     // initiate to the first temperature value if it is the first candlestick
-    double prevClose = 0;
+    double prevClose = yearEntries[0].temperature;
     if (candlesticks.size() > 0)
     {
       prevClose = candlesticks[candlesticks.size() - 1].close;

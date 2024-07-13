@@ -4,27 +4,23 @@
 #include <vector>
 #include "TemperatureEntry.h"
 
-enum class DateUnit
-{
-  Year,
-  Month,
-  Day
-};
-
 class PlotOptions
 {
 public:
-  PlotOptions(std::vector<TemperatureEntry> entries);
-  PlotOptions(bool displayValues, double intervalSize, DateUnit dateUnit, const std::string &dateRange);
+  PlotOptions();
 
-  bool displayValues;
-  double intervalSize;
-  DateUnit dateUnit;
+  std::string countryCode;
   std::string dateRange;
+  std::string temperatureRange;
+
+  double maxTemperature;
+  double minTemperature;
+
+  int earliestYear;
+  int latestYear;
 
   void printMenu();
-  PlotOptions setOptions();
 
 private:
-  static double calcInterval(std::vector<TemperatureEntry> entries);
+  void setOptions(std::string countryCode, std::string dateRange, std::string temperatureRange);
 };

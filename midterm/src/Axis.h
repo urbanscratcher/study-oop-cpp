@@ -2,18 +2,21 @@
 
 #include <string>
 #include <vector>
+#include "TemperatureEntry.h"
 
 class Axis
 {
-
 public:
-  Axis(char divider, char tick, std::string axisLabel, double intervalSize);
+  Axis(char divider, std::string axisLabel);
 
   char divider;
-  char tick;
+  double intervalSize;
   std::string axisLabel;
   std::vector<std::string> tickLabels;
 
-private:
-  void generateLabels(double intervalSize);
+  std::vector<std::string> generateLabels(std::vector<double> intervalSize);
+
+  double min;
+  double max;
+  void setMinMaxInterval(std::vector<double> items);
 };

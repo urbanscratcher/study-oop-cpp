@@ -9,8 +9,9 @@ CSVReader::CSVReader()
 {
 }
 
-std::vector<TemperatureEntry> CSVReader::readCSV(std::string csvFilename)
+std::vector<TemperatureEntry> CSVReader::readCSV(std::string &csvFilename, std::string &countryCode, double minTemperature, double maxTemperature, int earlistYear, int latestYear)
 {
+
   std::vector<TemperatureEntry> entries;
   std::ifstream csvFile(csvFilename);
   std::string line;
@@ -24,6 +25,7 @@ std::vector<TemperatureEntry> CSVReader::readCSV(std::string csvFilename)
 
     // tokenise the header line
     std::vector<std::string> header = tokenise(line, ',');
+    std::string temperatureColumnName = countryCode + "_temperature";
 
     // find the index of the date and temperature columns
     int dateIndex = -1;
@@ -34,7 +36,7 @@ std::vector<TemperatureEntry> CSVReader::readCSV(std::string csvFilename)
       {
         dateIndex = i;
       }
-      if (header[i] == "GB_temperature")
+      if (header[i] == temperatureColumnName)
       {
         temperatureIndex = i;
       }
@@ -46,9 +48,6 @@ std::vector<TemperatureEntry> CSVReader::readCSV(std::string csvFilename)
       throw std::invalid_argument("CSVReader::readCSV: CSV file is missing date or temperature columns");
     }
 
-    // print out the index
-    std::cout << "Date index: " << dateIndex << "| Temperature index: " << temperatureIndex << std::endl;
-
     // proceed to read the data after the header
     ////////////////////////////////////////////
     while (std::getline(csvFile, line))
@@ -58,8 +57,11 @@ std::vector<TemperatureEntry> CSVReader::readCSV(std::string csvFilename)
         // convert the line into a TemperatureEntry
         TemperatureEntry entry = stringsToTE(tokenise(line, ','), dateIndex, temperatureIndex);
 
-        // add the TemperatureEntry to the vector
-        entries.push_back(entry);
+        // add the TemperatureEntry to the vector if it is within the temperature range and the date range
+        if (entry.temperature >= minTemperature && entry.temperature <= maxTemperature && entry.date.substr(0, 4) >= std::to_string(earlistYear) && entry.date.substr(0, 4) <= std::to_string(latestYear))
+        {
+          entries.push_back(entry);
+        }
       }
       catch (const std::exception &e)
       {
@@ -67,6 +69,8 @@ std::vector<TemperatureEntry> CSVReader::readCSV(std::string csvFilename)
       }
     } // end of while
   }
+
+  std::cout << entries.size() << " entries read" << std::endl;
 
   return entries;
 }

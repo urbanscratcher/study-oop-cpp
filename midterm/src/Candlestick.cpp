@@ -1,5 +1,3 @@
 #include "Candlestick.h"
 
-Candlestick::Candlestick()
-{
-}
+Candlestick::Candlestick() {}

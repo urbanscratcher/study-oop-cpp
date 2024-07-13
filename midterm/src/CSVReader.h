@@ -10,7 +10,7 @@ class CSVReader
 public:
   CSVReader();
 
-  static std::vector<TemperatureEntry> readCSV(std::string csvFile);
+  static std::vector<TemperatureEntry> readCSV(std::string &csvFile, std::string &countryCode, double minTemperature, double maxTemperature, int earliestYear, int latestYear);
 
   static std::vector<std::string> tokenise(std::string csvLine, char separator);
 
