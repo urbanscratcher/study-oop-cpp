@@ -8,11 +8,10 @@
   - 1번째 `const`: 매개변수 `k`가 상수 참조임을 나타냄. 함수에 전달된 키 값이 수정되지 않도록 보장
   - 2번째 `count` (멤버 함수 뒤에 위치): 멤버 함수 자체가 상수 함수임을 나타냄. 해당 멤버 함수가 객체의 상태를 변경하지 않음을 의미. `std::map` 객체의 어떤 멤버 변수도 수정하지 않는다는 것을 보장함.
 
-## Static vs. Non-Static function in classes
-- Static functions
-  - do not have access to class data members.
-  - can be called without instantiating the class into an object.
-- Non-static functions
-  - have access to class data members.
-  - require an object, and you call them on that object.
-
+## 클래스에서 정적 함수와 비정적 함수의 차이점
+- 정적 함수
+  - 클래스 데이터 멤버에 접근할 수 없다.
+  - 클래스를 객체로 인스턴스화하지 않고 호출할 수 있다.
+- 비정적 함수
+  - 클래스 데이터 멤버에 접근할 수 있다.
+  - 객체가 필요하며, 그 객체에서 호출해야 한다.
