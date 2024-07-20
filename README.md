@@ -135,4 +135,11 @@
 - 상속을 통해 기본 클래스의 기능을 재사용하고 확장할 수 있음
 
 ### [Week 13](w13/note.md)
-- 
+- JUCE 애플리케이션은 `START_JUCE_APPLICATION` 매크로로 시작하며, 이는 `juce_initialization.h` 파일을 호출해 최종적으로 `main` 함수를 정의함.
+- 이벤트 리스너 패턴을 사용해 GUI 이벤트를 처리하며, 리스너는 이벤트 소스에 등록된 후 이벤트 발생 시 통지를 받아 처리함.
+- 추상 클래스는 순수 가상 함수를 포함하며, 이를 상속받는 클래스는 반드시 해당 함수를 구현해야 함.
+
+### [Week 14](w14/note.md)
+- 소리는 컴퓨터에서 숫자로 표현되며, 샘플링을 통해 디지털 데이터로 변환됨
+- JUCE를 사용해 다양한 오디오 파일 형식을 읽고 재생할 수 있으며, 각 클래스는 파일 읽기, 재생 제어 및 속도 조절 기능을 제공함
+- AudioFormatManager, AudioFormatReader, AudioFormatReaderSource, TransportSource, ResamplingAudioSource 클래스가 오디오 파일 재생 시스템을 구성함
